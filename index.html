@@ -39,15 +39,18 @@
       type="text/css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gridstack@1.1.2/dist/gridstack.min.css" />
     
   </head>
   <body>
     <!-- Start Page Loading -->
-    <div id="loader-wrapper">
+
+    <!-- <div id="loader-wrapper">
       <div id="loader"></div>
       <div class="loader-section section-left"></div>
       <div class="loader-section section-right"></div>
-    </div>
+    </div> -->
+
     <!-- End Page Loading -->
     <!-- //////////////////////////////////////////////////////////////////////////// -->
     <!-- START HEADER -->
@@ -114,6 +117,14 @@
           <div class="container">
             <!-- PUT DASHBOARD LAYOUT HERE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 
+            <div class="grid-stack">
+              <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="4">
+                <div class="grid-stack-item-content">my first widget</div>
+              </div>
+              <div class="grid-stack-item" data-gs-x="4" data-gs-y="0" data-gs-width="4" data-gs-height="4">
+                <div class="grid-stack-item-content">another widget!</div>
+              </div>
+            </div>
             <!-- PUT DASHBOARD LAYOUT HERE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
           </div>
           <!--end container-->
@@ -139,6 +150,8 @@
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
     <script type="text/javascript" src="js/plugins.js"></script>
     <!--custom-script.js - Add your own theme custom JS-->
+    <script src="https://cdn.jsdelivr.net/npm/gridstack@1.1.2/dist/gridstack.all.js"></script>
     <script type="text/javascript" src="js/custom-script.js"></script>
+
   </body>
 </html>
