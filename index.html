@@ -39,8 +39,10 @@
       type="text/css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gridstack@1.1.2/dist/gridstack.min.css" />
-    
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/gridstack@1.1.2/dist/gridstack.min.css"
+    />
   </head>
   <body>
     <!-- Start Page Loading -->
@@ -89,6 +91,46 @@
         <aside id="left-sidebar-nav">
           <ul id="slide-out" class="side-nav fixed leftside-navigation">
             <!-- PUT SIDE BAR CHARTS HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+            <div id="howcome"  class="newWidget grid-stack-item">
+              <div class="card-body grid-stack-item-content">
+                <div>
+                  <ion-icon
+                    name="add-circle"
+                    style="font-size: 400%;"
+                  ></ion-icon>
+                </div>
+                <div>
+                  <span>Drag me in into the dashboard!</span>
+                </div>
+              </div>
+            </div>
+
+            <div id="wider" class="newWidget grid-stack-item">
+              <div class="card-body grid-stack-item-content">
+                <div>
+                  <ion-icon
+                    name="add-circle"
+                    style="font-size: 400%;"
+                  ></ion-icon>
+                </div>
+                <div>
+                  <span>Hello</span>
+                </div>
+              </div>
+            </div>
+
+            <div
+              id="trash"
+              style="padding: 15px; margin-bottom: 15px;"
+              class="text-center"
+            >
+              <div>
+                <ion-icon name="trash" style="font-size: 400%;"></ion-icon>
+              </div>
+              <div>
+                <span>Drop here to remove!</span>
+              </div>
+            </div>
             <li class="no-padding">
               <ul class="collapsible" data-collapsible="accordion">
                 <li class="bold">
@@ -99,7 +141,6 @@
               </ul>
             </li>
             <!-- PUT SIDE BAR CHARTS HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-
           </ul>
           <a
             href="#"
@@ -118,10 +159,22 @@
             <!-- PUT DASHBOARD LAYOUT HERE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 
             <div class="grid-stack">
-              <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="4">
+              <div
+                class="grid-stack-item"
+                data-gs-x="0"
+                data-gs-y="0"
+                data-gs-width="4"
+                data-gs-height="4"
+              >
                 <div class="grid-stack-item-content">my first widget</div>
               </div>
-              <div class="grid-stack-item" data-gs-x="4" data-gs-y="0" data-gs-width="4" data-gs-height="4">
+              <div
+                class="grid-stack-item"
+                data-gs-x="4"
+                data-gs-y="0"
+                data-gs-width="4"
+                data-gs-height="4"
+              >
                 <div class="grid-stack-item-content">another widget!</div>
               </div>
             </div>
@@ -130,7 +183,6 @@
           <!--end container-->
         </section>
         <!-- END CONTENT -->
-
       </div>
       <!-- END WRAPPER -->
     </div>
@@ -152,6 +204,5 @@
     <!--custom-script.js - Add your own theme custom JS-->
     <script src="https://cdn.jsdelivr.net/npm/gridstack@1.1.2/dist/gridstack.all.js"></script>
     <script type="text/javascript" src="js/custom-script.js"></script>
-
   </body>
 </html>
