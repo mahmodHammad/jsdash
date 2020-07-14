@@ -17,3 +17,7 @@
 .grid-stack-item:active{
 	cursor:grab ;
 }
+#chartdiv {
+	width: 100%;
+	height: 500px;
+  }
