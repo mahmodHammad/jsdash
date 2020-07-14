@@ -3,32 +3,27 @@ const layout = document.getElementById("layout");
 const chartid = "cats";
 const sidebarIds = Object.keys(initCharts);
 
+layout.addEventListener("drop", (e) => {
+  console.log("XXXXXXXXXXXXXXXXXx", e);
+});
 function displaycharts() {
-  console.log(initCharts);
-  
   const active = sidebarIds.filter((e) => {
     return initCharts[e].active;
   });
 
-  console.log(active);
-
-  active.forEach(id => {
+  active.forEach((id) => {
     const { x, y, w, h } = initCharts[id].layout;
     layout.innerHTML += `<div class="grid-stack-item" data-gs-x=${x} data-gs-y=${y} data-gs-width=${w} data-gs-height=${h} ><div id=${id} class="grid-stack-item-content">  another widget!</div></div>`;
-    allcharts[id](id);
   });
 }
 displaycharts();
 
 function renderSideBarCharts() {
-	
   return sidebarIds.map(
-    (c) =>
-      `<li id=${c}x class="newWidget grid-stack-item">
-			<div class="card-body grid-stack-item-content">
-			 
-				${initCharts[c].label}
-			</div>
+    (c) => `<li id=${c}x class="newWidget grid-stack-item" draggable="true">
+		     <div class="card-body grid-stack-item-content">
+			    ${initCharts[c].label}
+		     </div>
 		  </li>`
   );
 }
@@ -48,11 +43,19 @@ var grid = GridStack.init({
 });
 
 grid.on("added", function (e, items) {
-  const droppedId = items[0].el.id;
-  layout.innerHTML =
-    '<div class="grid-stack-item" data-gs-x="4" data-gs-y="0" data-gs-width="4" data-gs-height="4" ><div id="chartdiv" class="grid-stack-item-content">  another widget!</div></div>';
-  renderchart();
-  console.log(e, items[0].el.id);
+  console.log(e.target);
+  const SideId = items[0].el.id;
+  const id = SideId.slice(0, -1);
+
+  //   initCharts[droppedId].active=true
+  //   displaycharts()
+  //   console.log("droppedId",droppedId)
+  const { x, y, w, h } = initCharts[id].layout;
+  e.target.innerHTML = `<div draggable="true" class="grid-stack-item" data-gs-x=${x} data-gs-y=${y} data-gs-width=${w} data-gs-height=${h} ><div id=${id} class="grid-stack-item-content">  another widget!</div></div>`;
+
+  allcharts[id](id);
+
+  console.log(e, items);
 });
 grid.on("removed", function (e, items) {
   console.log("removed ", items);
