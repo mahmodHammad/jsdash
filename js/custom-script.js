@@ -1,36 +1,33 @@
 const sidebarcharts = document.getElementById("slide-out");
 const layout = document.getElementById("layout");
 const chartid = "cats";
+const sidebarIds = Object.keys(initCharts);
 
-function displaychart() {
+function displaycharts() {
   console.log(initCharts);
-  const active = initCharts.filter((e) => {
-    console.log(e);
-    return e.active;
+  
+  const active = sidebarIds.filter((e) => {
+    return initCharts[e].active;
   });
+
   console.log(active);
 
-  active.forEach((c) => {
-	console.log(c, "c");
-	const {x,y,w,h}=c.layout
-    layout.innerHTML += `<div class="grid-stack-item" data-gs-x=${x} data-gs-y=${y} data-gs-width=${w} data-gs-height=${h} ><div id=${c.id} class="grid-stack-item-content">  another widget!</div></div>`;
-    allcharts[c.id](c.id);
+  active.forEach(id => {
+    const { x, y, w, h } = initCharts[id].layout;
+    layout.innerHTML += `<div class="grid-stack-item" data-gs-x=${x} data-gs-y=${y} data-gs-width=${w} data-gs-height=${h} ><div id=${id} class="grid-stack-item-content">  another widget!</div></div>`;
+    allcharts[id](id);
   });
 }
-displaychart();
-// layout.innerHTML =
-//   '<div class="grid-stack-item" data-gs-x="4" data-gs-y="0" data-gs-width="4" data-gs-height="4" ><div id=' +
-//   chartid +
-//   ' class="grid-stack-item-content">  another widget!</div></div>';
-// donut(chartid);
+displaycharts();
 
 function renderSideBarCharts() {
-  return initCharts.map(
+	
+  return sidebarIds.map(
     (c) =>
-      `<li id=${c.id}x class="newWidget grid-stack-item">
+      `<li id=${c}x class="newWidget grid-stack-item">
 			<div class="card-body grid-stack-item-content">
 			 
-				${c.label}
+				${initCharts[c].label}
 			</div>
 		  </li>`
   );

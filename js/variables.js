@@ -1,52 +1,44 @@
-let initCharts = [
-  {
-    id: "simplePieChart",
+let initCharts = {
+  simplePieChart: {
     label: "Human Body composition ",
-    active: false,
+    active: true,
     layout: { x: 1, y: 0, w: 2, h: 2 },
-    hover: false,
+    hover: true,
   },
-  {
-    id: "semi",
+  semi: {
     label: "semi Pi chart",
     active: true,
     layout: { x: 0, y: 0, w: 2, h: 3 },
-    hover: false,
+    hover: true,
   },
-  {
-    id: "ang",
+  ang: {
     label: "Anguler",
-    active: false,
+    active: true,
     layout: { x: 0, y: 0, w: 1, h: 1 },
-    hover: false,
+    hover: true,
   },
-  {
-    id: "human",
+  human: {
     label: "human",
-    active: false,
+    active: true,
     layout: { x: 1, y: 0, w: 2, h: 2 },
-    hover: false,
+    hover: true,
   },
-  {
-    id: "dataStoring",
+  dataStoring: {
     label: "dataStoring",
     active: true,
     layout: { x: 2, y: 0, w: 2, h: 3 },
-    hover: false,
+    hover: true,
   },
-  {
-    id: "donut",
+  donut: {
     label: "donut",
-    active: false,
+    active: true,
     layout: { x: 2, y: 0, w: 1, h: 2 },
-    hover: false,
+    hover: true,
   },
-  {
-    id: "cub",
+  cub: {
     label: "cub",
-    active: false,
+    active: true,
     layout: { x: 2, y: 0, w: 1, h: 2 },
-    hover: false,
+    hover: true,
   },
-  
-];
+};
