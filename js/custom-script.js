@@ -1,3 +1,19 @@
+const sidebarcharts = document.getElementById("slide-out");
+
+function renderSideBarCharts() {
+  return initCharts.map(
+    (c) =>
+      `<li id=${c.id} class="newWidget grid-stack-item">
+			<div class="card-body grid-stack-item-content">
+			 
+				${c.label}
+			</div>
+		  </li>`
+  );
+}
+
+sidebarcharts.innerHTML = renderSideBarCharts() + sidebarcharts.innerHTML;
+
 var grid = GridStack.init({
   alwaysShowResizeHandle: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
     navigator.userAgent
@@ -8,10 +24,12 @@ var grid = GridStack.init({
   removable: "#trash",
   removeTimeout: 100,
   acceptWidgets: ".newWidget",
+  
 });
 
 grid.on("added", function (e, items) {
-  console.log(e, items);
+	const droppedId = items[0].el.id
+  console.log(e, items[0].el.id);
 });
 grid.on("removed", function (e, items) {
   console.log("removed ", items);
@@ -75,21 +93,3 @@ am4core.ready(function () {
   chart.legend.markers.template.height = 40;
   marker.cornerRadius(20, 20, 20, 20);
 }); // end am4core.ready()
-
-const sidebarcharts = document.getElementById("slide-out");
-
-function renderSideBarCharts() {
-  return initCharts.map(
-    (c) =>
-      `<li id=${c.id} class="newWidget grid-stack-item">
-			<div class="card-body grid-stack-item-content">
-			 
-				${c.label}
-			</div>
-		  </li>`
-  );
-}
-
-console.log(renderSideBarCharts());
-
-sidebarcharts.innerHTML = renderSideBarCharts() +sidebarcharts.innerHTML;
