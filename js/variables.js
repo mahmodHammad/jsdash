@@ -19,26 +19,26 @@ let initCharts = {
   },
   human: {
     label: "human",
-    active: false,
-    layout: { x: 1, y: 0, w: 2, h: 2 },
+    active: true,
+    layout: { x: 1, y: 0, w: 8, h: 4 },
     hover: false,
   },
   dataStoring: {
     label: "dataStoring",
     active: false,
-    layout: { x: 2, y: 0, w: 2, h: 3 },
+    layout: { x: 2, y: 0, w: 6, h: 3 },
     hover: false,
   },
   donut: {
     label: "donut",
-    active: false,
-    layout: { x: 2, y: 0, w: 1, h: 2 },
+    active: true,
+    layout: { x: 2, y: 0, w: 6, h: 6 },
     hover: false,
   },
   cub: {
     label: "cub",
     active: false,
-    layout: { x: 2, y: 0, w: 1, h: 2 },
+    layout: { x: 2, y: 0, w: 4, h: 22 },
     hover: false,
   },
 };
