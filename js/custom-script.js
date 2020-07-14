@@ -1,7 +1,6 @@
 const sidebarcharts = document.getElementById("slide-out");
 const layout = document.getElementById("layout");
 const sidebarIds = Object.keys(initCharts);
-
 function toggle(e) {
   const id = e.id.slice(0, -1);
 
@@ -10,12 +9,19 @@ function toggle(e) {
     const temp = document.createElement("div");
     temp.innerHTML = `<div id=${id} class="grid-stack-item-content">  another widget!</div>`;
 
-    grid.addWidget(temp, x, y, w, h, true);
+    grid.addWidget(temp, 0, 0, w, h, true);
     allcharts[id](id);
     initCharts[id].active = true;
     updateSidebar();
+  } else {
+    let el = document.getElementById(id);
+    el.parentNode.remove();
+    // grid.removeAll(true)
+    initCharts[id].active = false;
+    //   grid.destroy()
+    console.log("remmmmmmmmove", el);
   }
-  console.log(initCharts[id].layout);
+  updateSidebar();
 }
 
 function renderSideBarCharts() {
@@ -34,12 +40,8 @@ function updateSidebar() {
   sidebarcharts.innerHTML =
     renderSideBarCharts() + '<div id="trash"> Drop here to remove! </div>';
 }
-
-function initSidebar() {
-  sidebarcharts.innerHTML = renderSideBarCharts() + sidebarcharts.innerHTML;
-}
-initSidebar();
-
+updateSidebar()
+ 
 var grid = GridStack.init({
   alwaysShowResizeHandle: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
     navigator.userAgent
@@ -49,7 +51,11 @@ var grid = GridStack.init({
   },
   removable: "#trash",
   removeTimeout: 100,
-  acceptWidgets: ".newWidget",
+  acceptWidgets: true,
+  animate: true,
+  cellHeight: 40,
+  column: 12,
+  removeTimeout: 10,
 });
 
 function renderinitcharts() {
@@ -62,7 +68,7 @@ function renderinitcharts() {
     const temp = document.createElement("div");
     temp.innerHTML = `<div id=${id} class="grid-stack-item-content">  ${id} widget!</div>`;
 
-    grid.addWidget(temp, x, y, w, h, true);
+    grid.addWidget(temp, x, y, w, h, false);
     allcharts[id](id);
   });
 }
@@ -87,6 +93,7 @@ grid.on("removed", function (e, items) {
 });
 grid.on("change", function (e, items) {
   console.log("change ", items);
+  console.log("e ", e);
 });
 
 // TODO: switch jquery-ui out
