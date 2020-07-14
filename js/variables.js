@@ -1,6 +1,6 @@
 const initCharts = [
   {
-    id: "stock",
+    id: "chartdiv",
     label: "Human Body composition ",
     active: false,
     layout: { x: 1, y: 0, w: 2, h: 2 },

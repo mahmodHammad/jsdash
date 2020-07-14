@@ -1,6 +1,8 @@
 .grid-stack{
-	border: solid 1px #ccc;
-	background-color: #fbfbfb;
+	border: solid 1px #eee;
+	/* background-color: #fcfcfc; */
+	min-height: calc(100vh - 104px);
+	margin-top: 20px;
 }
 
 
