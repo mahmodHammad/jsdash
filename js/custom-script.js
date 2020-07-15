@@ -1,16 +1,17 @@
+//|||||||||||||\\ THIS FILE NEEDS REFACTORING //|||||||||||||\\
 const sidebarcharts = document.getElementById("slide-out");
 const layout = document.getElementById("layout");
 const sidebarIds = Object.keys(initCharts);
 
 function store() {
-  // localStorage.setItem("layout", JSON.stringify(initCharts));
+  localStorage.setItem("layout", JSON.stringify(initCharts));
 }
 
 // override initcharts or store them
 (function () {
   const sLayout = localStorage.getItem("layout");
   if (sLayout == null) {
-    // localStorage.setItem("layout", JSON.stringify(initCharts));
+    localStorage.setItem("layout", JSON.stringify(initCharts));
   } else {
     initCharts = JSON.parse(sLayout);
   }
@@ -41,8 +42,6 @@ function toggle(e) {
   updateSidebar();
   store();
 }
-
- 
 
 function updateSidebar() {
   // display the sidebar items
