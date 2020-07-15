@@ -173,3 +173,19 @@
       })
     }
   });
+
+
+  const tett = document.querySelector(".fixed ");
+const menuBtn = document.getElementById("menuBtn");
+let sidebaropen = false;
+menuBtn.addEventListener("click", () => {
+  if (sidebaropen) {
+    sidebaropen = !sidebaropen;
+    tett.style.transform = "translateX(0)";
+  } else {
+    sidebaropen = !sidebaropen;
+
+    tett.style.transform = "translateX(-105%)";
+  }
+});
+
