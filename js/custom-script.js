@@ -1,6 +1,21 @@
+function store() {
+  console.log("Store", initCharts);
+  localStorage.setItem("layout", JSON.stringify(initCharts));
+}
+
+function restore() {
+  const sLayout = localStorage.getItem("layout");
+  if (sLayout == null) {
+    localStorage.setItem("layout", JSON.stringify(initCharts));
+  } else {
+    initCharts = JSON.parse(sLayout);
+  }
+}
+restore();
 const sidebarcharts = document.getElementById("slide-out");
 const layout = document.getElementById("layout");
 const sidebarIds = Object.keys(initCharts);
+
 function toggle(e) {
   const id = e.id.slice(0, -1);
 
@@ -9,7 +24,7 @@ function toggle(e) {
     const temp = document.createElement("div");
     temp.innerHTML = `<div id=${id} class="grid-stack-item-content">  another widget!</div>`;
 
-    grid.addWidget(temp, 0, 0, w, h, true);
+    grid.addWidget(temp, 0, 0, w, h, true, 2, undefined, 2, undefined, id);
     allcharts[id](id);
     initCharts[id].active = true;
     updateSidebar();
@@ -19,9 +34,9 @@ function toggle(e) {
     // grid.removeAll(true)
     initCharts[id].active = false;
     //   grid.destroy()
-    console.log("remmmmmmmmove", el);
   }
   updateSidebar();
+  store();
 }
 
 function renderSideBarCharts() {
@@ -40,8 +55,8 @@ function updateSidebar() {
   sidebarcharts.innerHTML =
     renderSideBarCharts() + '<div id="trash"> Drop here to remove! </div>';
 }
-updateSidebar()
- 
+updateSidebar();
+
 var grid = GridStack.init({
   alwaysShowResizeHandle: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
     navigator.userAgent
@@ -49,7 +64,7 @@ var grid = GridStack.init({
   resizable: {
     handles: "e, se, s, sw, w",
   },
-  removable: "#trash",
+  removable: "#slide-out",
   removeTimeout: 100,
   acceptWidgets: true,
   animate: true,
@@ -68,34 +83,27 @@ function renderinitcharts() {
     const temp = document.createElement("div");
     temp.innerHTML = `<div id=${id} class="grid-stack-item-content">  ${id} widget!</div>`;
 
-    grid.addWidget(temp, x, y, w, h, false);
+    grid.addWidget(temp, x, y, w, h, false, 2, undefined, 2, undefined, id);
     allcharts[id](id);
   });
 }
 renderinitcharts();
-// grid.on("added", function (e, items) {
-//   console.log(e.target);
-//   const SideId = items[0].el.id;
-//   const id = SideId.slice(0, -1);
 
-//   //   initCharts[droppedId].active=true
-//   //   displaycharts()
-//   //   console.log("droppedId",droppedId)
-//   const { x, y, w, h } = initCharts[id].layout;
-//   e.target.innerHTML +=`<div draggable="true" class="grid-stack-item" data-gs-x=${x} data-gs-y=${y} data-gs-width=${w} data-gs-height=${h} ><div id=${id} class="grid-stack-item-content">  another widget!</div></div>`;
-
-//   allcharts[id](id);
-
-//   console.log(e, items);
-// });
 grid.on("removed", function (e, items) {
-  console.log("removed ", items);
+  const id = items[0].id;
+  initCharts[id].active = false;
+  store();
+  updateSidebar();
 });
 grid.on("change", function (e, items) {
-  console.log("change ", items);
-  console.log("e ", e);
-});
+  const item = items[0];
+  const id = item.id;
+  const { x, y, width: w, height: h } = item;
+  let layout = { x, y, w, h };
+  initCharts[id].layout = layout;
 
+  store();
+});
 // TODO: switch jquery-ui out
 $(".newWidget").draggable({
   revert: "invalid",
