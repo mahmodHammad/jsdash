@@ -1,58 +1,63 @@
-function store() {
-  console.log("Store", initCharts);
-  localStorage.setItem("layout", JSON.stringify(initCharts));
-}
-
-function restore() {
-  const sLayout = localStorage.getItem("layout");
-  if (sLayout == null) {
-    localStorage.setItem("layout", JSON.stringify(initCharts));
-  } else {
-    initCharts = JSON.parse(sLayout);
-  }
-}
-
-restore();
 const sidebarcharts = document.getElementById("slide-out");
 const layout = document.getElementById("layout");
 const sidebarIds = Object.keys(initCharts);
 
+function store() {
+  // localStorage.setItem("layout", JSON.stringify(initCharts));
+}
+
+// override initcharts or store them
+(function () {
+  const sLayout = localStorage.getItem("layout");
+  if (sLayout == null) {
+    // localStorage.setItem("layout", JSON.stringify(initCharts));
+  } else {
+    initCharts = JSON.parse(sLayout);
+  }
+})();
+
 function toggle(e) {
-  const id = e.id.slice(0, -1);
+  const id = e.id.slice(0, -1); //remove the extra x at the end
 
   if (!initCharts[id].active) {
-    const { x, y, w, h } = initCharts[id].layout;
+    // add to the layout
+    const { w, h } = initCharts[id].layout;
+
     const temp = document.createElement("div");
-    temp.innerHTML = `<div id=${id} class="grid-stack-item-content">  another widget!</div>`;
+    temp.innerHTML = `<div id=${id} class="grid-stack-item-content"> Your are not supposed to see this message :P </div>`;
 
     grid.addWidget(temp, 0, 0, w, h, true, 2, undefined, 2, undefined, id);
-    allcharts[id](id);
+    allcharts[id](id); //render the chart
     initCharts[id].active = true;
     updateSidebar();
   } else {
+    // remove from the layout
+    // [BUG] -> after removing the node, the free space on the layout will not allocated for adding new ones by clicking
+    // [solution] -> drag-drop-resize layout charts and use that free space...for now
     let el = document.getElementById(id);
     el.parentNode.remove();
-    // grid.removeAll(true)
     initCharts[id].active = false;
-    //   grid.destroy()
   }
   updateSidebar();
   store();
 }
 
-function renderSideBarCharts() {
-  return sidebarIds.map(
-    (c) => `<li id=${c}x class="sidebarItem ${
-      initCharts[c].active && "activeChart"
-    }"  onclick="toggle(${c}x)">
+ 
+
+function updateSidebar() {
+  // display the sidebar items
+  function renderSideBarCharts() {
+    // for simplicity i put this function here because i will not use it outside this scope
+    return sidebarIds.map(
+      (c) => `<li id=${c}x class="sidebarItem ${
+        initCharts[c].active && "activeChart"
+      }"  onclick="toggle(${c}x)">
 		     <div class="card-body">
 			    ${initCharts[c].label}
 		     </div>
 		  </li>`
-  );
-}
-
-function updateSidebar() {
+    );
+  }
   sidebarcharts.innerHTML =
     renderSideBarCharts() + '<div id="trash"> Drop here to remove! </div>';
 }
@@ -74,7 +79,8 @@ var grid = GridStack.init({
   removeTimeout: 0,
 });
 
-function renderinitcharts() {
+// initialize the layout based on the state of the (initCharts) object
+(function renderinitcharts() {
   const active = sidebarIds.filter((e) => {
     return initCharts[e].active;
   });
@@ -87,8 +93,7 @@ function renderinitcharts() {
     grid.addWidget(temp, x, y, w, h, false, 2, undefined, 2, undefined, id);
     allcharts[id](id);
   });
-}
-renderinitcharts();
+})();
 
 grid.on("removed", function (e, items) {
   const id = items[0].id;
@@ -96,12 +101,12 @@ grid.on("removed", function (e, items) {
   store();
   updateSidebar();
 });
+
 grid.on("change", function (e, items) {
   const item = items[0];
   const id = item.id;
   const { x, y, width: w, height: h } = item;
   let layout = { x, y, w, h };
   initCharts[id].layout = layout;
-
   store();
 });

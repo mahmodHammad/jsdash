@@ -13,14 +13,14 @@ function cub(id) {
 
     chart.data = [
       {
-        name: "B",
-        value: 40,
+        name: "Milk",
+        value: 70,
         disabled: true,
       },
       {
-        name: "A",
-        value: 60,
-      },
+        name: "Tea",
+        value: 30,
+      }
     ];
 
     var series = chart.series.push(new am4charts.PictorialStackedSeries());
@@ -90,10 +90,6 @@ function donut(id) {
       {
         country: "Belgium",
         litres: 60,
-      },
-      {
-        country: "The Netherlands",
-        litres: 50,
       },
     ];
 
@@ -355,11 +351,14 @@ function semi(id) {
 
     chart.data = [
       {
-        country: "Lithuania",
+        country: "Egypt",
+        value: 565,
+      }, {
+        country: "Titin",
         value: 401,
       },
       {
-        country: "Czech Republic",
+        country: "Czech ",
         value: 300,
       },
       {
@@ -369,15 +368,7 @@ function semi(id) {
       {
         country: "Germany",
         value: 165,
-      },
-      {
-        country: "Australia",
-        value: 139,
-      },
-      {
-        country: "Austria",
-        value: 128,
-      },
+      }
     ];
     chart.radius = am4core.percent(70);
     chart.innerRadius = am4core.percent(40);

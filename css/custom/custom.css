@@ -16,8 +16,8 @@
 .grid-stack-item:active {
   cursor: grab;
 }
-#slide-out{
-	padding: 20px 0;
+#slide-out {
+  padding: 20px 0;
 }
 #chartdiv {
   width: 100%;
@@ -25,18 +25,17 @@
 }
 
 .sidebarItem {
-	transition: all 0.3s ease !important;
-
+  transition: all 0.3s ease !important;
 }
 
 #trash {
   background-color: #f54336;
   color: #fff;
   font-weight: bold;
-  padding: 60px 50px;
-  /* text-align: center;   */
+  padding: 40px 5px;
+  text-align: center;
   position: fixed;
-  width: 1000%;
+  width: 100%;
   bottom: 60px;
 }
 
