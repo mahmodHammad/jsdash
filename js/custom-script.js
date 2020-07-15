@@ -48,7 +48,7 @@ function updateSidebar() {
   function renderSideBarCharts() {
     // for simplicity i put this function here because i will not use it outside this scope
     return sidebarIds.map(
-      (c) => `<li id=${c}x class="sidebarItem ${
+      (c) => `<li id=${c}x class="sidebarItem waves-effect  ${
         initCharts[c].active && "activeChart"
       }"  onclick="toggle(${c}x)">
 		     <div class="card-body">

@@ -26,6 +26,7 @@
 
 .sidebarItem {
   transition: all 0.3s ease !important;
+  display: block;
 }
 
 #trash {
