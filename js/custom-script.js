@@ -43,7 +43,7 @@ function toggle(e) {
 function renderSideBarCharts() {
   return sidebarIds.map(
     (c) => `<li id=${c}x class="sidebarItem ${
-      initCharts[c].active && "active"
+      initCharts[c].active && "activeChart"
     }"  onclick="toggle(${c}x)">
 		     <div class="card-body">
 			    ${initCharts[c].label}
@@ -66,12 +66,12 @@ var grid = GridStack.init({
     handles: "e, se, s, sw, w",
   },
   removable: "#slide-out",
-  removeTimeout: 100,
+  removeTimeout: 0,
   acceptWidgets: true,
   animate: true,
   cellHeight: 40,
   column: 12,
-  removeTimeout: 10,
+  removeTimeout: 0,
 });
 
 function renderinitcharts() {
