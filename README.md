@@ -12,9 +12,12 @@
   |--images/                <-- All the images of the template
   |
   |--js/
+  |  |--custom-script.js     <-- The core of the App, it has all logic for the layout
+  |  |--variable.js          <-- The JSON of the layout [change it with your layouts]
+  |  |--charts.js            <-- All usable Charts [add your new charts here ]
+  |  |--plugins.js           <-- Template main JS file
   |  |--materialize-plugins/ <-- Materialize framework core JS files
   |  |--scripts/             <-- Template html page wise js scripts
-  |  |--custom-script.js     <-- Use this JS file to write your own custom JS
   |  |--materialize.js       <-- Materialize framework JS file generated from materialize-plugins/
   |  |--plugins.js           <-- Template main JS file
   |

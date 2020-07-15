@@ -5805,8 +5805,8 @@ li.home:before {
 
 .gradient-45deg-purple-amber {
   background: #d500f9;
-  background: -webkit-linear-gradient(45deg, #d500f9 0%, #ffa000 100%);
-  background: linear-gradient(45deg, #d500f9 0%, #ffa000 100%);
+  background: -webkit-linear-gradient(45deg, #f54336 0%, #ffa000 100%);
+  background: linear-gradient(45deg, #f54336 0%, #ffa000 100%);
 }
 
 .gradient-45deg-purple-amber.gradient-shadow {

@@ -11,6 +11,7 @@ function restore() {
     initCharts = JSON.parse(sLayout);
   }
 }
+
 restore();
 const sidebarcharts = document.getElementById("slide-out");
 const layout = document.getElementById("layout");
@@ -42,7 +43,7 @@ function toggle(e) {
 function renderSideBarCharts() {
   return sidebarIds.map(
     (c) => `<li id=${c}x class="sidebarItem ${
-      initCharts[c].active ? "active" : ""
+      initCharts[c].active && "active"
     }"  onclick="toggle(${c}x)">
 		     <div class="card-body">
 			    ${initCharts[c].label}
@@ -103,11 +104,4 @@ grid.on("change", function (e, items) {
   initCharts[id].layout = layout;
 
   store();
-});
-// TODO: switch jquery-ui out
-$(".newWidget").draggable({
-  revert: "invalid",
-  scroll: false,
-  appendTo: "body",
-  helper: "clone",
 });
