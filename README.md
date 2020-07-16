@@ -1,5 +1,5 @@
 ```
-  materialize-admin/        <-- Template root folder
+  index.html                <-- Root  
   |--css/
   |  |--custom/custom.css   <-- Write your custom css or generate custom.css using custom.scss
   |  |--materialize.css     <-- compiled from scss/materialize.scss
@@ -29,8 +29,6 @@
   |  |--theme.scss           <-- Auto generated theme.scss file from Grunt, Generate for specific theme(i.e collapsible-menu) based on grunt commend  grunt watch --Layout="collapsible-menu"
   |
   |--vendors/                <-- All Venders JS & SCSS
-  |
-  *.html                     <-- Template all html file here 
   |
   package.json               <-- Node package JSON file.
   |

@@ -1,4 +1,6 @@
 //|||||||||||||\\ THIS FILE NEEDS REFACTORING //|||||||||||||\\
+//|||||||||||||\\ THIS FILE NEEDS REFACTORING //|||||||||||||\\
+//|||||||||||||\\ THIS FILE NEEDS REFACTORING //|||||||||||||\\
 const sidebarcharts = document.getElementById("slide-out");
 const layout = document.getElementById("layout");
 const sidebarIds = Object.keys(initCharts);
@@ -17,27 +19,45 @@ function store() {
   }
 })();
 
+// reset the layout and display Empty
+function checkEmpty(isAdd) {
+  const active = getActive();
+  if (active.length < 1) {
+    if (isAdd) {
+      layout.innerHTML = "";
+    } else {
+      layout.innerHTML = "<h3 class='empty' > Your Layout is Empty!  <h3/>";
+      grid.removeAll(true);
+    }
+  } else return false;
+}
+
+function addToLayout(id) {
+  const { w, h } = initCharts[id].layout;
+
+  const temp = document.createElement("div");
+  temp.innerHTML = `<div id=${id} class="grid-stack-item-content"> Your are not supposed to see this message :P </div>`;
+
+  grid.addWidget(temp, 0, 0, w, h, true, 2, undefined, 2, undefined, id);
+  allcharts[id](id); //render the chart
+  initCharts[id].active = true;
+}
+
+function removeFromLayout(id) {
+  let el = document.getElementById(id);
+  el.parentNode.remove();
+  initCharts[id].active = false;
+}
+
 function toggle(e) {
   const id = e.id.slice(0, -1); //remove the extra x at the end
 
-  if (!initCharts[id].active) {
-    // add to the layout
-    const { w, h } = initCharts[id].layout;
-
-    const temp = document.createElement("div");
-    temp.innerHTML = `<div id=${id} class="grid-stack-item-content"> Your are not supposed to see this message :P </div>`;
-
-    grid.addWidget(temp, 0, 0, w, h, true, 2, undefined, 2, undefined, id);
-    allcharts[id](id); //render the chart
-    initCharts[id].active = true;
-    updateSidebar();
+  if (initCharts[id].active) {
+    removeFromLayout(id);
+    checkEmpty(false);
   } else {
-    // remove from the layout
-    // [BUG] -> after removing the node, the free space on the layout will not allocated for adding new ones by clicking
-    // [solution] -> drag-drop-resize layout charts and use that free space...for now
-    let el = document.getElementById(id);
-    el.parentNode.remove();
-    initCharts[id].active = false;
+    checkEmpty(true);
+    addToLayout(id);
   }
   updateSidebar();
   store();
@@ -78,12 +98,16 @@ var grid = GridStack.init({
   removeTimeout: 0,
 });
 
-// initialize the layout based on the state of the (initCharts) object
-(function renderinitcharts() {
-  const active = sidebarIds.filter((e) => {
+function getActive() {
+  return sidebarIds.filter((e) => {
     return initCharts[e].active;
   });
+}
+// initialize the layout based on the state of the (initCharts) object
+(function renderinitcharts() {
+  checkEmpty(false);
 
+  const active = getActive();
   active.forEach((id) => {
     const { x, y, w, h } = initCharts[id].layout;
     const temp = document.createElement("div");
