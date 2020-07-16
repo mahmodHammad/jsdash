@@ -9,6 +9,7 @@
   background-color: #fff;
   border: solid 1px #eee;
 }
+
 .newWidget {
   border: 1px solid #ccc;
 }
@@ -16,9 +17,11 @@
 .grid-stack-item:active {
   cursor: grab;
 }
+
 #slide-out {
   padding: 20px 0;
 }
+
 #chartdiv {
   width: 100%;
   height: 100%;
@@ -27,6 +30,9 @@
 .sidebarItem {
   transition: all 0.3s ease !important;
   display: block;
+  margin: 5px 0;
+  box-shadow: 0 0 20px -3px rgba(245, 67, 54, 0.28),
+  0 4px 20px 0 rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(245, 67, 54, 0.2) !important;
 }
 
 #trash {
@@ -41,15 +47,16 @@
 }
 
 .card-body {
-  padding: 12px;
+  padding: 14px;
   text-transform: capitalize;
-  font-size: 16px;
-  box-shadow: 0 0 20px -3px rgba(245, 67, 54, 0.28),
-    0 4px 20px 0 rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(245, 67, 54, 0.2);
+  font-size: 17px;
+ 
 }
+
 .card-body:hover {
   cursor: pointer;
 }
+
 .activeChart {
   background: #f54336 !important;
   color: #fff;
