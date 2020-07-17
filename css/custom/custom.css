@@ -3,23 +3,35 @@
   /* background-color: #fcfcfc; */
   min-height: calc(100vh - 104px);
   margin-top: 20px;
+  box-shadow: 0 0 29px -8px rgba(100, 100, 100, 0.3) !important;
 }
 
 .grid-stack-item {
   background-color: #fff;
-  border: solid 1px #eee;
+  border: solid 1px #f4f4f4;
+  box-shadow: 0px 20px 28px -35px rgb(100, 100, 100) !important;
+  transition: all 0.3s ease !important;
+}
+.grid-stack-item:hover {
+  box-shadow: 0px 20px 20px -35px rgb(200, 200, 200) !important;
+}
+
+.grid-stack-item:active {
+  cursor: grab;
+  opacity: 0.9;
 }
 
 .newWidget {
   border: 1px solid #ccc;
 }
 
-.grid-stack-item:active {
-  cursor: grab;
-}
-
 #slide-out {
   padding: 20px 0;
+  background-color: #fafafa;
+}
+
+#slide-out:hover {
+  background-color: #fff;
 }
 
 #chartdiv {
@@ -32,7 +44,12 @@
   display: block;
   margin: 5px 0;
   box-shadow: 0 0 20px -3px rgba(245, 67, 54, 0.28),
-  0 4px 20px 0 rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(245, 67, 54, 0.2) !important;
+    0 4px 20px 0 rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(245, 67, 54, 0.2) !important;
+}
+
+.sidebarItem:hover {
+  box-shadow: 0 0 10px -3px rgba(225, 97, 94, 0.28),
+    0 4px 20px 0 rgba(55, 55, 55, 0.12), 0 7px 8px -5px rgba(222, 97, 94, 0.2) !important;
 }
 
 #trash {
@@ -50,7 +67,6 @@
   padding: 14px;
   text-transform: capitalize;
   font-size: 17px;
- 
 }
 
 .card-body:hover {
@@ -62,7 +78,11 @@
   color: #fff;
 }
 
-.empty{
+.empty {
   text-align: center;
   color: #f54336;
+}
+
+#menuBtn{
+  z-index: 1000;
 }
