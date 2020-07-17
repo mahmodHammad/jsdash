@@ -86,3 +86,9 @@
 #menuBtn{
   z-index: 1000;
 }
+
+@media only screen and (max-width: 900px) {
+ #trash {
+    display: none;
+  }
+}

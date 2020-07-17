@@ -6605,7 +6605,7 @@ nav ul li.no-hover:hover {
 }
 
 ul.side-nav.leftside-navigation {
-  top: 70px;
+  top: 70px !important;
   overflow: hidden;
   height: 100%;
 }
