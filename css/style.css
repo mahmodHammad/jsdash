@@ -2659,7 +2659,7 @@ select {
   position: fixed;
   width: 100px;
   left: 180px;
-  z-index: 999;
+  /* z-index: 999; */
   height: auto;
 }
 
@@ -6605,8 +6605,8 @@ nav ul li.no-hover:hover {
 }
 
 ul.side-nav.leftside-navigation {
-  top: 70px !important;
-  overflow: hidden;
+  top: 62px !important;
+  overflow: auto;
   height: 100%;
 }
 

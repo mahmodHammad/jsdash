@@ -56,11 +56,12 @@
   background-color: #f54336;
   color: #fff;
   font-weight: bold;
-  padding: 40px 5px;
+  padding: 30px 5px;
   text-align: center;
   position: fixed;
   width: 100%;
   bottom: 60px;
+  opacity: 0.9;
 }
 
 .card-body {
@@ -92,3 +93,9 @@
     display: none;
   }
 }
+
+@media only screen and (max-height: 850px) {
+  #trash {
+     display: none;
+   }
+ }
